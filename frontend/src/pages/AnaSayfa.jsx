@@ -23,8 +23,8 @@ const AnaSayfa = () => {
         
         // Arama ve Kategori filtrelerini URL'e ekliyoruz
         let url = 'http://localhost:5000/api/tarifler?';
-        if (aramaMetni) url += `arama=${aramaMetni}&`;
-        if (seciliKategori) url += `kategori=${seciliKategori}`;
+        if (aramaMetni) url += `arama=${encodeURIComponent(aramaMetni)}&`;
+        if (seciliKategori) url += `kategori=${encodeURIComponent(seciliKategori)}`;
 
         const yanit = await fetch(url);
         const veri = await yanit.json();
