@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Renk Paleti - Sade, Temiz ve Premium */
+  --renk-birincil: #dc2626; /* Canlı Premium Kırmızı */
+  --renk-birincil-hover: #b91c1c;
+  --renk-ikincil: #2f855a; /* Huzur Verici Organik Yeşil */
+  --renk-ikincil-hover: #225c3f;
+  
+  --renk-arka-plan: #f8fafc; /* Açık Temiz Arka Plan */
+  --renk-kart-arka-plan: #ffffff; /* Düz Beyaz Kartlar */
+  
+  --renk-yazi-ana: #0f172a; /* Slate 900 (Okunması Çok Kolay Koyu Gri) */
+  --renk-yazi-ikincil: #475569; /* Slate 600 (Açıklamalar İçin Gri) */
+  --renk-yazi-acik: #ffffff;
+  
+  --renk-kenarlik: #e2e8f0; /* Çok İnce ve Temiz Gri Çizgi */
+  --renk-hata: #ef4444;
+  --renk-basari: #10b981;
+  --renk-uyari: #f59e0b;
+
+  /* Temiz ve Köşeli/Yuvarlak Dengesi */
+  --yarıcap-kart: 12px;
+  --yarıcap-buton: 8px;
+
+  /* Modern Yazı Tipi */
+  --font-ana: 'Plus Jakarta Sans', sans-serif;
+
+  /* Yumuşak Geçişler */
+  --gecis: all 0.15s ease-in-out;
+}
+
+/* Sayfa Sıfırlamaları */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-ana);
+  background-color: var(--renk-arka-plan);
+  color: var(--renk-yazi-ana);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--renk-yazi-ana);
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--gecis);
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  outline: none;
+}
