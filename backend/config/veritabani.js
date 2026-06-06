@@ -182,7 +182,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 15,
         pisirmeSuresi: 15,
         kisiSayisi: 3,
-        resimUrl: 'https://images.unsplash.com/photo-1604514639360-2e1a64bf7785?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1604908177488-8462b5bf4cb9?w=800',
         yazar: ahmet._id, // Ahmet Demir tarafından
         ortalamaPuan: 4.8,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -268,7 +268,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 15,
         pisirmeSuresi: 0,
         kisiSayisi: 8,
-        resimUrl: 'https://images.unsplash.com/photo-1612182062633-9ff3b3598e96?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=800',
         yazar: elif._id, // Elif Yılmaz tarafından
         ortalamaPuan: 4.7,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
