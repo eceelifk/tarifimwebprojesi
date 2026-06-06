@@ -43,10 +43,39 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 10,
         pisirmeSuresi: 25,
         kisiSayisi: 4,
-        resimUrl: 'https://images.unsplash.com/photo-1607532941433-304659e8198a?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1547592165-e1d17f8e07cb?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.8,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
+      },
+      {
+        baslik: 'Kremalı Domates Çorbası',
+        aciklama: 'Taze domatesler, fırınlanmış sarımsak ve kaşar peyniri rendesi ile sunulan nefis kıvamlı domates çorbası.',
+        kategori: 'Çorba',
+        malzemeler: [
+          '5 adet olgun domates',
+          '1 yemek kaşığı tereyağı',
+          '2 yemek kaşığı un',
+          '1 yemek kaşığı domates salçası',
+          '1 çay bardağı süt veya sıvı krema',
+          '4 su bardağı sıcak su',
+          'Tuz, karabiber',
+          'Servis için rendelenmiş kaşar peyniri'
+        ],
+        hazirlanis: [
+          'Tencerede tereyağını eritip unu kokusu çıkana kadar kavurun.',
+          'Salçayı ekleyip 1 dakika karıştırın, ardından rendelenmiş veya robottan geçirilmiş domatesleri ekleyin.',
+          'Sıcak suyu ilave edip çorba kaynayana kadar karıştırarak pişirin.',
+          'Çorba piştikten sonra blenderdan geçirin. Sütü yavaşça ekleyip karıştırın ve tuz/baharatını ekleyin.',
+          'Kaşar peyniri rendesi ile sıcak servis yapın.'
+        ],
+        hazirlamaSuresi: 15,
+        pisirmeSuresi: 20,
+        kisiSayisi: 4,
+        resimUrl: 'https://images.unsplash.com/photo-1547592165-e1d17f8e07cb?w=800',
+        yazar: sef._id,
+        ortalamaPuan: 4.6,
+        puanlar: [{ kullanici: sef._id, puan: 4 }]
       },
       {
         baslik: 'Fırında Anne Köftesi ve Patates',
@@ -72,9 +101,37 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 20,
         pisirmeSuresi: 35,
         kisiSayisi: 5,
-        resimUrl: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.9,
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
+      },
+      {
+        baslik: 'Sebzeli Tavuk Sote',
+        aciklama: 'Renkli biberler ve mantarla sotelenmiş, lokum gibi yumuşacık tavuk göğsü.',
+        kategori: 'Ana Yemek',
+        malzemeler: [
+          '500 gram tavuk göğsü',
+          '1 adet kuru soğan',
+          '1 adet kırmızı kapya biber',
+          '2 adet yeşil biber',
+          '200 gram mantar',
+          '2 yemek kaşığı zeytinyağı',
+          '1 yemek kaşığı domates salçası',
+          'Tuz, karabiber, kekik, kırmızı toz biber'
+        ],
+        hazirlanis: [
+          'Tavuk göğsünü küp küp doğrayın ve zeytinyağında suyunu salıp çekene kadar soteleyin.',
+          'Doğranmış soğanları ekleyip tavuklarla birlikte kavurun.',
+          'Sırasıyla biberleri ve mantarları ekleyip sotelemeye devam edin.',
+          'Salçayı ve baharatları ekleyip yarım çay bardağı sıcak su ilave edin ve kapağını kapatıp sebzeler yumuşayana kadar pişirin.'
+        ],
+        hazirlamaSuresi: 15,
+        pisirmeSuresi: 20,
+        kisiSayisi: 4,
+        resimUrl: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800',
+        yazar: sef._id,
+        ortalamaPuan: 4.7,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
       },
       {
@@ -103,6 +160,37 @@ const verileriTohumla = async () => {
         yazar: sef._id,
         ortalamaPuan: 4.7,
         puanlar: [{ kullanici: sef._id, puan: 4 }]
+      },
+      {
+        baslik: 'Çikolatalı Islak Kek',
+        aciklama: 'Bol çikolata soslu, içi nemli ve yumuşacık klasik ev yapımı ıslak kek.',
+        kategori: 'Tatlı',
+        malzemeler: [
+          '3 adet yumurta',
+          '1.5 su bardağı toz şeker',
+          '1 su bardağı süt',
+          '1 su bardağı sıvı yağ',
+          '1 paket vanilya',
+          '1 paket kabartma tozu',
+          '3 yemek kaşığı kakao',
+          '1.5 su bardağı un',
+          'Sosu için: 1 su bardağı süt, yarım su bardağı şeker, yarım çay bardağı sıvı yağ, 2 yemek kaşığı kakao'
+        ],
+        hazirlanis: [
+          'Yumurta ve şekeri köpürene kadar iyice çırpın.',
+          'Süt, sıvı yağ, vanilya ve kakaoyu ekleyip çırpmaya devam edin.',
+          'Elenmiş un ve kabartma tozunu spatula ile yavaşça karıştırarak harca yedirin.',
+          'Yağlanmış borcama döküp 180 derece fırında 30-35 dakika pişirin.',
+          'Kek pişerken sos malzemelerini sos tenceresinde bir taşım kaynatıp ılık hale getirin.',
+          'Fırından çıkan sıcak keki dilimleyin ve ılık sosu üzerine gezdirip sosu çekmesini bekleyin.'
+        ],
+        hazirlamaSuresi: 15,
+        pisirmeSuresi: 30,
+        kisiSayisi: 10,
+        resimUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800',
+        yazar: sef._id,
+        ortalamaPuan: 4.8,
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
       },
       {
         baslik: 'Glutensiz Avokadolu Fit Salata',
@@ -154,7 +242,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 15,
         pisirmeSuresi: 25,
         kisiSayisi: 4,
-        resimUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.9,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -183,6 +271,58 @@ const verileriTohumla = async () => {
         resimUrl: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.8,
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
+      },
+      {
+        baslik: 'Fırında Baharatlı Tatlı Patates',
+        aciklama: 'Biberiye ve zeytinyağı ile harmanlanmış, çıtır fırınlanmış fit tatlı patates dilimleri.',
+        kategori: 'Fit & Glutensiz',
+        malzemeler: [
+          '2 adet orta boy tatlı patates',
+          '2 yemek kaşığı sızma zeytinyağı',
+          '1 çay kaşığı toz sarımsak',
+          '1 tatlı kaşığı kurutulmuş biberiye',
+          'Tuz, karabiber, tatlı toz biber'
+        ],
+        hazirlanis: [
+          'Tatlı patatesleri güzelce yıkayıp kabuklarını soyun ve elma dilimi şeklinde doğrayın.',
+          'Derin bir kapta zeytinyağı, sarımsak, biberiye ve baharatları karıştırın.',
+          'Patates dilimlerini bu sosla iyice harmanlayın.',
+          'Yağlı kağıt serili tepsiye üst üste gelmeyecek şekilde dizin.',
+          'Önceden ısıtılmış 200 derece fırında dışı çıtırlaşana kadar yaklaşık 25-30 dakika pişirin.'
+        ],
+        hazirlamaSuresi: 10,
+        pisirmeSuresi: 25,
+        kisiSayisi: 3,
+        resimUrl: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=800',
+        yazar: sef._id,
+        ortalamaPuan: 4.6,
+        puanlar: [{ kullanici: sef._id, puan: 4 }]
+      },
+      {
+        baslik: 'Köz Patlıcanlı Meze',
+        aciklama: 'Sarımsaklı süzme yoğurt ve zeytinyağlı köz patlıcanın nefis birleşimi.',
+        kategori: 'Diğer',
+        malzemeler: [
+          '3 adet kemer patlıcan',
+          '1 su bardağı süzme yoğurt',
+          '2 diş ezilmiş sarımsak',
+          '2 yemek kaşığı sızma zeytinyağı',
+          'Tuz',
+          'Üzeri için: pul biber ve ceviz içi'
+        ],
+        hazirlanis: [
+          'Patlıcanları birkaç yerinden delip fırında veya ocakta közleyin.',
+          'Közlenen patlıcanların kabuklarını soyup bıçakla ince ince kıyın.',
+          'Süzme yoğurt, sarımsak ve tuzu karıştırıp patlıcanları ekleyin.',
+          'Servis tabağına alıp üzerine zeytinyağı gezdirin, pul biber ve ceviz ile süsleyin.'
+        ],
+        hazirlamaSuresi: 20,
+        pisirmeSuresi: 15,
+        kisiSayisi: 4,
+        resimUrl: 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=800',
+        yazar: sef._id,
+        ortalamaPuan: 4.7,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
       }
     ];
