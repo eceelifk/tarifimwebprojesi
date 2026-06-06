@@ -43,7 +43,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 10,
         pisirmeSuresi: 25,
         kisiSayisi: 4,
-        resimUrl: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800',
+        resimUrl: 'https://esenler.bel.tr/wp-content/uploads/2022/07/Mercimek-Corbasi-scaled.jpg',
         yazar: sef._id,
         ortalamaPuan: 4.8,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -101,7 +101,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 20,
         pisirmeSuresi: 35,
         kisiSayisi: 5,
-        resimUrl: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=800',
+        resimUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTcyjsaar7mlSNpsV7zJBkPSOJtj7HLVwz4w&s',
         yazar: sef._id,
         ortalamaPuan: 4.9,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -242,7 +242,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 15,
         pisirmeSuresi: 25,
         kisiSayisi: 4,
-        resimUrl: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=800',
+        resimUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk6SNvuaEU9cqfQxkKTylAyPnyC1i_xjHbZA&s',
         yazar: sef._id,
         ortalamaPuan: 4.9,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -320,7 +320,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 20,
         pisirmeSuresi: 15,
         kisiSayisi: 4,
-        resimUrl: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=800',
+        resimUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ18_1OhQwHjCJGteJGL-zBMXLBeDEBkQS5uQ&s',
         yazar: sef._id,
         ortalamaPuan: 4.7,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
