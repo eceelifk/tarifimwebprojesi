@@ -5,31 +5,6 @@ import Tarif from '../models/Tarif.js';
 // Verileri tohumlama (Seed Data) fonksiyonu
 const verileriTohumla = async () => {
   try {
-    const tarifSayisi = await Tarif.countDocuments();
-    if (tarifSayisi > 0) {
-      // Zaten tarifler varsa, eski/çalışmayan resim adreslerini güncelliyoruz
-      await Tarif.updateOne(
-        { baslik: 'Geleneksel Mercimek Çorbası' },
-        { $set: { resimUrl: 'https://images.unsplash.com/photo-1607532941433-304659e8198a?w=800' } }
-      );
-      await Tarif.updateOne(
-        { baslik: 'Fırında Anne Köftesi ve Patates' },
-        { $set: { resimUrl: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800' } }
-      );
-      await Tarif.updateOne(
-        { baslik: 'San Sebastian Cheesecake' },
-        { $set: { resimUrl: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800' } }
-      );
-      await Tarif.updateOne(
-        { baslik: 'Glutensiz Avokadolu Fit Salata' },
-        { $set: { resimUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800' } }
-      );
-      console.log('Mevcut hazır tarif görselleri güncel çalışan linklerle güncellendi.');
-      return;
-    }
-
-    console.log('Veritabanı boş. Hazır tarifler ve varsayılan örnek Şef kullanıcısı oluşturuluyor...');
-
     // Örnek bir Şef kullanıcısı oluştur (Tariflerin yazarı olması için)
     let sef = await Kullanici.findOne({ eposta: 'sef@tarifim.com' });
     if (!sef) {
@@ -71,9 +46,7 @@ const verileriTohumla = async () => {
         resimUrl: 'https://images.unsplash.com/photo-1607532941433-304659e8198a?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.8,
-        puanlar: [
-          { kullanici: sef._id, puan: 5 }
-        ]
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
       },
       {
         baslik: 'Fırında Anne Köftesi ve Patates',
@@ -102,9 +75,7 @@ const verileriTohumla = async () => {
         resimUrl: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.9,
-        puanlar: [
-          { kullanici: sef._id, puan: 5 }
-        ]
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
       },
       {
         baslik: 'San Sebastian Cheesecake',
@@ -131,9 +102,7 @@ const verileriTohumla = async () => {
         resimUrl: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.7,
-        puanlar: [
-          { kullanici: sef._id, puan: 4 }
-        ]
+        puanlar: [{ kullanici: sef._id, puan: 4 }]
       },
       {
         baslik: 'Glutensiz Avokadolu Fit Salata',
@@ -160,14 +129,76 @@ const verileriTohumla = async () => {
         resimUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800',
         yazar: sef._id,
         ortalamaPuan: 5.0,
-        puanlar: [
-          { kullanici: sef._id, puan: 5 }
-        ]
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
+      },
+      {
+        baslik: 'Fırında Sebzeli Kinoa Mücveri',
+        aciklama: 'Unsuz, yağsız fırında pişen ve bol protein içeren fit mücver tarifi.',
+        kategori: 'Fit & Glutensiz',
+        malzemeler: [
+          '1 su bardağı haşlanmış kinoa',
+          '2 adet orta boy kabak',
+          '1 adet havuç',
+          '2 adet yumurta',
+          'Yarım demet taze dereotu',
+          '100 gram lor peyniri',
+          'Tuz, pul biber, karabiber'
+        ],
+        hazirlanis: [
+          'Kabakları ve havucu ince rendeleyip sularını elinizle iyice sıkın.',
+          'Derin bir kapta yumurtaları çırpın, ardından kinoa, rendelenmiş sebzeler, ince kıyılmış dereotu ve lor peynirini ekleyin.',
+          'Baharatları ilave edip spatula ile iyice karıştırın.',
+          'Yağlı kağıt serili fırın tepsisine kaşık yardımıyla yuvarlak porsiyonlar halinde dökün.',
+          'Önceden ısıtılmış 180 derece fırında üzerleri altın sarısı olana kadar yaklaşık 25 dakika pişirin.'
+        ],
+        hazirlamaSuresi: 15,
+        pisirmeSuresi: 25,
+        kisiSayisi: 4,
+        resimUrl: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800',
+        yazar: sef._id,
+        ortalamaPuan: 4.9,
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
+      },
+      {
+        baslik: 'Yulaflı Muzlu Fit Kurabiye',
+        aciklama: 'Şekersiz, unsuz, sadece 3 ana malzeme ile çay saatlerinizin vazgeçilmezi olacak sağlıklı kurabiyeler.',
+        kategori: 'Fit & Glutensiz',
+        malzemeler: [
+          '2 adet olgun muz',
+          '1 su bardağı yulaf ezmesi',
+          '1 yemek kaşığı kakao',
+          '1 yemek kaşığı süzme bal (isteğe bağlı)',
+          '2 yemek kaşığı damla çikolata'
+        ],
+        hazirlanis: [
+          'Muzları derin bir kasede çatal yardımıyla püre haline getirene kadar iyice ezin.',
+          'Üzerine yulaf ezmesini ve kakaoyu ekleyip spatula ile kıvam alana kadar karıştırın.',
+          'Son olarak damla çikolatayı ekleyip nazikçe karıştırın.',
+          'Fırın tepsisine kaşıkla yuvarlak şekiller vererek aralıklı olarak dizin.',
+          '180 derece önceden ısıtılmış fırında 15 dakika pişirip oda sıcaklığında soğumaya bırakın.'
+        ],
+        hazirlamaSuresi: 10,
+        pisirmeSuresi: 15,
+        kisiSayisi: 6,
+        resimUrl: 'https://images.unsplash.com/photo-1558961303-1d20210a290b?w=800',
+        yazar: sef._id,
+        ortalamaPuan: 4.8,
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
       }
     ];
 
-    await Tarif.insertMany(hazirTarifler);
-    console.log('Örnek hazır yemek tarifleri başarıyla veritabanına yüklendi!');
+    // Her tarif için veritabanını kontrol edip eksik olanları ekliyoruz / var olanları güncelliyoruz
+    for (const tarif of hazirTarifler) {
+      const mevcutTarif = await Tarif.findOne({ baslik: tarif.baslik });
+      if (!mevcutTarif) {
+        await Tarif.create(tarif);
+        console.log(`Yeni hazır tarif eklendi: "${tarif.baslik}"`);
+      } else {
+        // Var olan tarifin resim linkini güncel ve çalışan linkle eşleştiriyoruz
+        await Tarif.updateOne({ _id: mevcutTarif._id }, { $set: { resimUrl: tarif.resimUrl } });
+      }
+    }
+    console.log('Örnek hazır yemek tarifleri başarıyla kontrol edildi ve tohumlandı!');
   } catch (hata) {
     console.error('Hazır tarif yükleme hatası:', hata.message);
   }
