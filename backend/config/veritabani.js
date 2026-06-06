@@ -43,7 +43,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 10,
         pisirmeSuresi: 25,
         kisiSayisi: 4,
-        resimUrl: 'https://images.unsplash.com/photo-1547592165-e1d17f8e07cb?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.8,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -72,7 +72,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 15,
         pisirmeSuresi: 20,
         kisiSayisi: 4,
-        resimUrl: 'https://images.unsplash.com/photo-1547592165-e1d17f8e07cb?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.6,
         puanlar: [{ kullanici: sef._id, puan: 4 }]
@@ -101,7 +101,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 20,
         pisirmeSuresi: 35,
         kisiSayisi: 5,
-        resimUrl: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.9,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -294,7 +294,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 10,
         pisirmeSuresi: 25,
         kisiSayisi: 3,
-        resimUrl: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.6,
         puanlar: [{ kullanici: sef._id, puan: 4 }]
@@ -320,7 +320,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 20,
         pisirmeSuresi: 15,
         kisiSayisi: 4,
-        resimUrl: 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=800',
+        resimUrl: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.7,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
