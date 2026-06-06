@@ -5,7 +5,7 @@ import Tarif from '../models/Tarif.js';
 // Verileri tohumlama (Seed Data) fonksiyonu
 const verileriTohumla = async () => {
   try {
-    // Örnek bir Şef kullanıcısı oluştur (Tariflerin yazarı olması için)
+    // 1. Örnek Sistem Şefi (Admin)
     let sef = await Kullanici.findOne({ eposta: 'sef@tarifim.com' });
     if (!sef) {
       sef = await Kullanici.create({
@@ -14,6 +14,30 @@ const verileriTohumla = async () => {
         sifre: '123456',
         rol: 'admin',
         profilResmi: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=150'
+      });
+    }
+
+    // 2. Örnek Kullanıcı 1 (Elif Yılmaz)
+    let elif = await Kullanici.findOne({ eposta: 'elif@tarifim.com' });
+    if (!elif) {
+      elif = await Kullanici.create({
+        isim: 'Elif Yılmaz',
+        eposta: 'elif@tarifim.com',
+        sifre: '123456',
+        rol: 'kullanici',
+        profilResmi: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150'
+      });
+    }
+
+    // 3. Örnek Kullanıcı 2 (Ahmet Demir)
+    let ahmet = await Kullanici.findOne({ eposta: 'ahmet@tarifim.com' });
+    if (!ahmet) {
+      ahmet = await Kullanici.create({
+        isim: 'Ahmet Demir',
+        eposta: 'ahmet@tarifim.com',
+        sifre: '123456',
+        rol: 'kullanici',
+        profilResmi: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150'
       });
     }
 
@@ -101,7 +125,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 20,
         pisirmeSuresi: 35,
         kisiSayisi: 5,
-        resimUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTcyjsaar7mlSNpsV7zJBkPSOJtj7HLVwz4w&s',
+        resimUrl: 'https://cdn.myikas.com/images/52036155-b163-4fc0-a730-34e056fc0d79/75988d92-ee95-4eac-b9b8-fdcaa0fad92e/image_1080.jpg',
         yazar: sef._id,
         ortalamaPuan: 4.9,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -132,6 +156,35 @@ const verileriTohumla = async () => {
         resimUrl: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.7,
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
+      },
+      {
+        baslik: 'Mantarlı Kremalı Tavuk',
+        aciklama: 'Tavada mühürlenmiş tavuk göğsünün, krema ve taze mantarlarla buluştuğu nefis bir akşam yemeği.',
+        kategori: 'Ana Yemek',
+        malzemeler: [
+          '600 gram tavuk göğsü (fileto)',
+          '250 gram mantar',
+          '1 paket sıvı krema (200 ml)',
+          '2 diş sarımsak',
+          '2 yemek kaşığı zeytinyağı',
+          '1 yemek kaşığı tereyağı',
+          'Tuz, karabiber, kekik'
+        ],
+        hazirlanis: [
+          'Tavuk göğüslerini fileto şeklinde ince kesip tuz ve karabiberle lezzetlendirin.',
+          'Geniş bir tavada zeytinyağını ısıtıp tavukları arkalı önlü hafif kızarana kadar mühürleyin ve bir tabağa alın.',
+          'Aynı tavaya tereyağını ekleyin, dilimlenmiş mantarları ilave edip suyunu salıp çekene kadar soteleyin.',
+          'İnce kıyılmış sarımsakları ekleyip 1 dakika kavurun.',
+          'Sıvı kremayı, tuzu, karabiberi ve kekiği ekleyip karıştırın.',
+          'Tavukları tekrar tavaya sosun içine dizin ve kısık ateşte sos kıvam alana kadar yaklaşık 10 dakika pişirin.'
+        ],
+        hazirlamaSuresi: 15,
+        pisirmeSuresi: 15,
+        kisiSayisi: 3,
+        resimUrl: 'https://images.unsplash.com/photo-1604514639360-2e1a64bf7785?w=800',
+        yazar: ahmet._id, // Ahmet Demir tarafından
+        ortalamaPuan: 4.8,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
       },
       {
@@ -190,6 +243,34 @@ const verileriTohumla = async () => {
         resimUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800',
         yazar: sef._id,
         ortalamaPuan: 4.8,
+        puanlar: [{ kullanici: sef._id, puan: 5 }]
+      },
+      {
+        baslik: 'Mozaik Pasta',
+        aciklama: 'Çocukluğumuzun unutulmaz lezzeti, yapımı son derece pratik ve pişirme gerektirmeyen nefis mozaik pasta.',
+        kategori: 'Tatlı',
+        malzemeler: [
+          '300 gram pötibör bisküvi',
+          '1 su bardağı süt',
+          '3 yemek kaşığı tereyağı',
+          '3 yemek kaşığı kakao',
+          '5 yemek kaşığı toz şeker',
+          '1 çay bardağı ceviz içi (isteğe bağlı)'
+        ],
+        hazirlanis: [
+          'Tereyağını küçük bir sos tenceresinde eritin.',
+          'Eriyen tereyağının üzerine süt, toz şeker ve kakaoyu ekleyip şeker eriyene kadar karıştırın (kaynatmayın, sadece ılıtın).',
+          'Derin bir kaba bisküvileri elinizle çok ufatmadan 3-4 parçaya kırın.',
+          'Hazırladığınız kakaolu sosu bisküvilerin üzerine döküp bisküvileri ezmeden nazikçe karıştırın.',
+          'Harcı streç film serilmiş baton kalıba döküp piramit şekli verin.',
+          'Buzlukta en az 3-4 saat dinlendirdikten sonra dilimleyerek servis yapın.'
+        ],
+        hazirlamaSuresi: 15,
+        pisirmeSuresi: 0,
+        kisiSayisi: 8,
+        resimUrl: 'https://images.unsplash.com/photo-1612182062633-9ff3b3598e96?w=800',
+        yazar: elif._id, // Elif Yılmaz tarafından
+        ortalamaPuan: 4.7,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
       },
       {
@@ -334,8 +415,11 @@ const verileriTohumla = async () => {
         await Tarif.create(tarif);
         console.log(`Yeni hazır tarif eklendi: "${tarif.baslik}"`);
       } else {
-        // Var olan tarifin resim linkini güncel ve çalışan linkle eşleştiriyoruz
-        await Tarif.updateOne({ _id: mevcutTarif._id }, { $set: { resimUrl: tarif.resimUrl } });
+        // Var olan tarifin resim ve yazar linklerini güncelliyoruz
+        await Tarif.updateOne(
+          { _id: mevcutTarif._id },
+          { $set: { resimUrl: tarif.resimUrl, yazar: tarif.yazar } }
+        );
       }
     }
     console.log('Örnek hazır yemek tarifleri başarıyla kontrol edildi ve tohumlandı!');
