@@ -12,7 +12,7 @@ import { kimlikDogrula } from '../middleware/kimlikDogrulama.js';
 
 const router = express.Router();
 
-// Tariflerin listelenmesi ve tek bir tarifin getirilmesi herkese açıktır
+// Tariflerin listelenmesi ve tek bir tarifin getirilmesi herkese 
 router.get('/', tarifleriGetir);
 router.get('/:id', tarifGetir);
 
@@ -21,7 +21,7 @@ router.post('/', kimlikDogrula, tarifEkle);
 router.put('/:id', kimlikDogrula, tarifGuncelle);
 router.delete('/:id', kimlikDogrula, tarifSil);
 
-// Puan verme ve favorilere ekleme/çıkarma işlemleri de korumalıdır
+// Puan verme ve favorilere ekleme/çıkarma - korumalı
 router.post('/:id/puan', kimlikDogrula, tarifePuanVer);
 router.post('/:id/favori', kimlikDogrula, tarifFavoriToggle);
 

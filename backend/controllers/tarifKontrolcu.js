@@ -10,17 +10,17 @@ export const tarifleriGetir = async (req, res, sonraki) => {
     const { arama, kategori } = req.query;
     let sorgu = {};
 
-    // 1. Arama sorgusu varsa filtreleme yap (Başlığa göre harf duyarsız arama)
+    //  Arama sorgusu varsa filtreleme yapma 
     if (arama) {
       sorgu.baslik = { $regex: arama, $options: 'i' };
     }
 
-    // 2. Kategori seçilmişse filtreleme yap
+    // Kategori seçilmişse filtreleme yapma
     if (kategori && kategori !== 'Tümü') {
       sorgu.kategori = kategori;
     }
 
-    // Sorguyu çalıştırıp tarif yazarının ismini ve profil resmini dolduruyoruz (populate)
+    // Sorguyu çalıştırıp tarif yazarının ismini ve profil resmini doldurma (populate)
     const tarifler = await Tarif.find(sorgu)
       .populate('yazar', 'isim profilResmi')
       .sort({ createdAt: -1 }); // En yeni tarifler üstte
@@ -35,14 +35,14 @@ export const tarifleriGetir = async (req, res, sonraki) => {
   }
 };
 
-// @desc    ID ile tek bir tarifi getir
+// @desc    ID ile tek bir tarifi getirme
 // @route   GET /api/tarifler/:id
 // @access  Public
 export const tarifGetir = async (req, res, sonraki) => {
   const { id } = req.params;
 
   try {
-    // Tarifi bulup yazar bilgilerini çekiyoruz
+    // Tarifi bulup yazar bilgilerini çeker
     const tarif = await Tarif.findById(id).populate('yazar', 'isim profilResmi');
 
     if (!tarif) {
@@ -50,7 +50,7 @@ export const tarifGetir = async (req, res, sonraki) => {
       throw new Error('Belirtilen yemek tarifi bulunamadı.');
     }
 
-    // Bu tarife yapılan yorumları ve yorum yazarlarının isimlerini de buluyoruz
+    // Bu tarife yapılan yorumları ve yorum yazarlarının isimleri bulma
     const yorumlar = await Yorum.find({ tarif: id })
       .populate('yazar', 'isim profilResmi')
       .sort({ createdAt: -1 });
@@ -67,12 +67,12 @@ export const tarifGetir = async (req, res, sonraki) => {
 
 // @desc    Yeni tarif oluştur
 // @route   POST /api/tarifler
-// @access  Private (Sadece giriş yapmış kullanıcılar)
+// @access  Private 
 export const tarifEkle = async (req, res, sonraki) => {
   const { baslik, aciklama, kategori, malzemeler, hazirlanis, hazirlamaSuresi, pisirmeSuresi, kisiSayisi, resimUrl } = req.body;
 
   try {
-    // Giriş yapan kullanıcının ID'sini yazar olarak kaydediyoruz
+    // Giriş yapan kullanıcının ID'sini yazar olarak kayıt
     const yeniTarif = new Tarif({
       baslik,
       aciklama,
@@ -112,13 +112,13 @@ export const tarifGuncelle = async (req, res, sonraki) => {
       throw new Error('Güncellenecek tarif bulunamadı.');
     }
 
-    // Yetki Kontrolü: Tarifi sadece kendi yazarı veya admin güncelleyebilir
+    // Yetki Kontrolü: Tarifi sadece kendi yazarı veya admin günceller
     if (tarif.yazar.toString() !== req.kullanici._id.toString() && req.kullanici.rol !== 'admin') {
       res.status(403);
       throw new Error('Bu tarifi güncellemek için yetkiniz yok.');
     }
 
-    // Gelen yeni bilgileri güncelle
+    // Gelen yeni bilgileri güncelleme
     const guncellenenTarif = await Tarif.findByIdAndUpdate(
       id,
       { $set: req.body },
@@ -155,13 +155,13 @@ export const tarifSil = async (req, res, sonraki) => {
       throw new Error('Bu tarifi silmek için yetkiniz yok.');
     }
 
-    // 1. Tarifi sil
+    //  Tarifi sil
     await Tarif.findByIdAndDelete(id);
 
-    // 2. Bu tarife bağlı tüm yorumları temizle (Veritabanı tutarlılığı için)
+    //  Bu tarife bağlı tüm yorumları temizle 
     await Yorum.deleteMany({ tarif: id });
 
-    // 3. Kullanıcıların favorilerinden bu tarifi kaldır
+    //  Kullanıcıların favorilerinden bu tarifi kaldır
     await Kullanici.updateMany(
       { favoriler: id },
       { $pull: { favoriler: id } }
@@ -176,7 +176,7 @@ export const tarifSil = async (req, res, sonraki) => {
   }
 };
 
-// @desc    Tarife puan ver (1-5 arası)
+// @desc    Tarife puan ver
 // @route   POST /api/tarifler/:id/puan
 // @access  Private
 export const tarifePuanVer = async (req, res, sonraki) => {
@@ -202,7 +202,7 @@ export const tarifePuanVer = async (req, res, sonraki) => {
     );
 
     if (eskiPuanIndex > -1) {
-      // Daha önce puan vermişse puanı güncelle
+      // Daha önce puan vermişse puanı güncelleme
       tarif.puanlar[eskiPuanIndex].puan = Number(puan);
     } else {
       // İlk kez puan veriyorsa yeni puan nesnesini diziye ekle

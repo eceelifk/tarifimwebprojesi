@@ -1,19 +1,19 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
-// Kullanıcı bilgilerini belirlediğimiz şablon (Schema)
+// Kullanıcı bilgileri için
 const KullaniciSema = new mongoose.Schema(
   {
     isim: {
       type: String,
       required: [true, 'Lütfen adınızı yazınız.'],
-      trim: true // Başındaki ve sonundaki boşlukları temizler
+      trim: true // Başındaki ve sonundaki boşlukları temizle
     },
     eposta: {
       type: String,
       required: [true, 'Lütfen e-posta adresinizi yazınız.'],
-      unique: true, // Aynı e-posta ile sadece 1 kişi kaydolabilir
-      lowercase: true, // E-postayı küçük harfe çevirir
+      unique: true, // Aynı e-posta ile 1 kişi 
+      lowercase: true, // E-postayı küçük harfe
       trim: true,
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -28,7 +28,7 @@ const KullaniciSema = new mongoose.Schema(
     rol: {
       type: String,
       enum: ['kullanici', 'admin'],
-      default: 'kullanici' // Standart olarak herkes 'kullanici' olarak kaydolur
+      default: 'kullanici' // herkes 'kullanici' olarak kaydolur
     },
     profilResmi: {
       type: String,
@@ -37,17 +37,17 @@ const KullaniciSema = new mongoose.Schema(
     favoriler: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tarif' // Kullanıcının beğendiği tarifleri Tarif modeline bağladık (Modeller arası ilişki)
+        ref: 'Tarif' // Kullanıcının beğendiği tarifleri Tarif modeline bağla 
       }
     ]
   },
   {
-    timestamps: true // Oluşturulma (createdAt) ve Güncellenme (updatedAt) tarihlerini otomatik ekler
+    timestamps: true // Oluşturulma (createdAt) ve Güncellenme (updatedAt) tarihlerini otomatik ekle
   }
 );
 
-// Şifreyi veritabanına kaydetmeden ÖNCE otomatik olarak şifreliyoruz (hash)
-// Bu Mongoose ara yazılımı (middleware) veritabanına kayıt yapılmadan hemen önce çalışır
+// Şifreyi veritabanına kaydetmeden ÖNCE otomatik olarak şifreler (hash)
+// middleware veritabanına kayıt yapılmadan hemen önce çalışır
 KullaniciSema.pre('save', async function (sonraki) {
   // Eğer şifre alanı değiştirilmediyse şifreleme yapmadan geç
   if (!this.isModified('sifre')) {
@@ -55,10 +55,10 @@ KullaniciSema.pre('save', async function (sonraki) {
   }
 
   try {
-    // Şifreyi karıştırmak için tuz (salt) üretiyoruz
-    const tuz = await bcrypt.genSalt(10);
-    // Şifreyi tuz kullanarak karıştırıyoruz (şifreliyoruz)
-    this.sifre = await bcrypt.hash(this.sifre, tuz);
+    // Şifreyi karıştırmak için salt üretiyoruz
+    const salt = await bcrypt.genSalt(10);
+    //şifreliyoruz
+    this.sifre = await bcrypt.hash(this.sifre, salt);
     sonraki();
   } catch (hata) {
     sonraki(hata);

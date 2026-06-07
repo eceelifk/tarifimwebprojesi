@@ -29,7 +29,7 @@ export const yorumEkle = async (req, res, sonraki) => {
 
     const kaydedilenYorum = await yeniYorum.save();
 
-    // Kaydedilen yorumun yazar bilgilerini çekip öyle döndürelim (ekranda anında görünmesi için)
+    // Kaydedilen yorumun yazar bilgilerini çekip 
     const detayliYorum = await Yorum.findById(kaydedilenYorum._id).populate(
       'yazar',
       'isim profilResmi'

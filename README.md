@@ -6,7 +6,7 @@ Kullanıcılar sistemde kendi hesaplarını oluşturabilir, leziz yemek tarifler
 
 ---
 
-## 🚀 Proje Özellikleri
+##  Proje Özellikleri
 
 1. **Backend (Node.js + Express.js + Mongoose):**
    - MVC (Model-View-Controller) mimarisine uygun temiz klasör yapısı.
@@ -34,7 +34,7 @@ Kullanıcılar sistemde kendi hesaplarını oluşturabilir, leziz yemek tarifler
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+##  Kullanılan Teknolojiler
 
 - **Frontend:** React.js, Vite, React Router DOM, Lucide React (İkonlar), Vanilla CSS.
 - **Backend:** Node.js, Express.js, Mongoose, JWT, Bcrypt.js, Morgan, CORS, Dotenv.
@@ -43,7 +43,7 @@ Kullanıcılar sistemde kendi hesaplarını oluşturabilir, leziz yemek tarifler
 
 ---
 
-## 📁 Proje Klasör Yapısı
+## Proje Klasör Yapısı
 
 ```
 tarifim/
@@ -64,13 +64,13 @@ tarifim/
 │   │   ├── App.jsx           # Rotaların belirlendiği ana bileşen
 │   │   ├── index.css         # Tasarım Değişkenleri ve Global Sıfırlamalar
 │   │   └── main.jsx          # Başlangıç noktası
-├── dokumantasyon.md          # UML ve Veritabanı Diyagramları
+├
 └── package.json              # Kök dizin kontrol dosyası
 ```
 
 ---
 
-## 💻 Kurulum ve Çalıştırma Adımları
+##  Kurulum ve Çalıştırma Adımları
 
 Proje kök dizininde yer alan `package.json` dosyasındaki özel betikler sayesinde sunucu ve arayüzü tek tuşla kurup ayağa kaldırabilirsiniz.
 
@@ -102,7 +102,3 @@ npm start
 *Bu komut sayesinde hem backend API sunucusu `http://localhost:5000` adresinde, hem de React arayüzü `http://localhost:5173` adresinde **aynı anda** çalışmaya başlayacaktır.*
 
 ---
-
-## 📊 Diyagramlar ve Teknik Belgeler
-
-Projenin UML diyagramlarını (Use-Case, Activity, ER Diyagramı ve Bileşen Yapısı) görmek için kök dizindeki **[dokumantasyon.md](file:///C:/Users/elife/tarifim/dokumantasyon.md)** dosyasını açabilirsiniz.

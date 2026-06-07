@@ -3,27 +3,27 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
 
-// Veritabanı ve Middleware dosyalarını içe aktarıyoruz
+// Veritabanı ve Middleware içe aktar
 import veritabaninaBaglan from './config/veritabani.js';
 import hataYakalayici from './middleware/hataYonetimi.js';
 
-// Rota dosyalarını içe aktarıyoruz
+// Rota dosyalarını içe aktar
 import kullaniciRotalari from './routes/kullaniciRotalari.js';
 import tarifRotalari from './routes/tarifRotalari.js';
 import yorumRotalari from './routes/yorumRotalari.js';
 
-// .env dosyasındaki ortam değişkenlerini yüklüyoruz
+// .env dosyasındaki ortam değişkenlerini yükleme
 dotenv.config();
 
-// MongoDB'ye bağlanıyoruz
+// MongoDB'ye bağlanma
 veritabaninaBaglan();
 
-// Express uygulamasını başlatıyoruz
+// Express uygulamasını başlatma
 const app = express();
 
-// Arayazılımları (Middleware) kuruyoruz
-app.use(cors()); // CORS politikalarını ayarlıyoruz (Frontend'in sunucuya erişebilmesi için)
-app.use(express.json({ limit: '10mb' })); // Gelen JSON verilerini okuyabilmek için (Base64 resimleri desteklemek amacıyla limit artırıldı)
+// Arayazılımları (Middleware) kurma
+app.use(cors()); // CORS politikalarını ayarlama (Frontend'in sunucuya erişebilmesi için)
+app.use(express.json({ limit: '10mb' })); // Gelen JSON verilerini okuyabilmek için 
 app.use(express.urlencoded({ limit: '10mb', extended: true })); // URL encoded veriler için limit ayarı
 app.use(morgan('dev')); // Gelen HTTP isteklerini konsola loglamak için
 
@@ -44,13 +44,13 @@ app.use((req, res, sonraki) => {
   sonraki(hata);
 });
 
-// Merkezi Hata Yönetimi middleware'ini bağlıyoruz (Rotalardan sonra olmalıdır!)
+// Merkezi Hata Yönetimi middleware'ini bağlama (Rotalardan sonra olucsk)
 app.use(hataYakalayici);
 
-// Port numarasını alıyoruz (varsayılan olarak 5000)
+// Port numarasını al(varsayılan olarak 5000)
 const PORT = process.env.PORT || 5000;
 
-// Sunucuyu dinlemeye başlıyoruz
+// Sunucuyu dinlemeye başla
 app.listen(PORT, () => {
   console.log(`\n=========================================`);
   console.log(`Tarifim Sunucusu ${PORT} portunda yayında!`);

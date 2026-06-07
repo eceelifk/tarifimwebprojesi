@@ -4,10 +4,10 @@ import { kimlikDogrula } from '../middleware/kimlikDogrulama.js';
 
 const router = express.Router();
 
-// Yorum ekleme (Private)
+// Yorum ekle (Private)
 router.post('/', kimlikDogrula, yorumEkle);
 
-// Yorum silme (Private)
+// Yorum sil (Private)
 router.delete('/:id', kimlikDogrula, yorumSil);
 
 export default router;

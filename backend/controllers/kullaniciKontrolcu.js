@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 
 // JWT Token üretme yardımcı fonksiyonu
 const tokenUret = (id) => {
-  // Token oluşturup içine kullanıcının veritabanı ID'sini gömüyoruz.
-  // 30 gün geçerli olacak şekilde ayarladık.
+  // Token oluşturup içine kullanıcının veritabanı ID'sini gömüyo
+  // 30 gün geçerli olacak şekilde ayarlı
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '30d'
   });
@@ -12,34 +12,34 @@ const tokenUret = (id) => {
 
 // @desc    Yeni kullanıcı kaydı
 // @route   POST /api/kullanici/kayit
-// @access  Public (Herkes erişebilir)
+// @access  Public 
 export const kayitOl = async (req, res, sonraki) => {
   const { isim, eposta, sifre, profilResmi } = req.body;
 
   try {
-    // 1. Gerekli alanların doldurulduğunu kontrol et
+    // Gerekli alanların doldurulduğunu kontrol etme
     if (!isim || !eposta || !sifre) {
       res.status(400);
       throw new Error('Lütfen tüm alanları doldurunuz.');
     }
 
-    // 2. E-posta adresinin sistemde kayıtlı olup olmadığını kontrol et
+    //  E-posta adresinin sistemde kayıtlı olup olmadığını kontrol etme
     const epostaVarMi = await Kullanici.findOne({ eposta });
     if (epostaVarMi) {
       res.status(400);
       throw new Error('Bu e-posta adresi zaten kullanımda.');
     }
 
-    // 3. Yeni kullanıcıyı oluştur (Şifreleme Mongoose modelinde pre-save ile otomatik yapılacak)
+    //  Yeni kullanıcıyı oluştur (Şifreleme Mongoose modelinde pre-save ile otomatik yapılacak)
     const yeniKullanici = await Kullanici.create({
       isim,
       eposta,
       sifre,
-      profilResmi // Eğer boşsa şema varsayılan resmi kullanacaktır
+      profilResmi // Eğer boşsa şema varsayılan resmi kullanacak
     });
 
     if (yeniKullanici) {
-      // 4. Kullanıcı oluşturulduysa token üretip geri dön
+      // Kullanıcı oluşturulduysa token üretip geri dönme
       res.status(201).json({
         basarili: true,
         mesaj: 'Kullanıcı başarıyla kaydedildi.',
@@ -58,7 +58,7 @@ export const kayitOl = async (req, res, sonraki) => {
       throw new Error('Kullanıcı kaydedilirken geçersiz veri hatası oluştu.');
     }
   } catch (hata) {
-    // Express'in hata yakalayıcısına yönlendiriyoruz
+    // Express'in hata yakalayıcısına yönlendirme
     sonraki(hata);
   }
 };
@@ -70,16 +70,16 @@ export const girisYap = async (req, res, sonraki) => {
   const { eposta, sifre } = req.body;
 
   try {
-    // 1. Alanların girildiğini kontrol et
+    // Alanların girildiğini kontrol etme
     if (!eposta || !sifre) {
       res.status(400);
       throw new Error('Lütfen e-posta ve şifrenizi giriniz.');
     }
 
-    // 2. Kullanıcıyı e-postaya göre veritabanında ara
+    //e-postaya göre veritabanında arama
     const kullanici = await Kullanici.findOne({ eposta });
     
-    // 3. Kullanıcı bulunduysa ve şifre eşleşiyorsa token ile giriş izni ver
+    //  bulunduysa ve şifre eşleşiyorsa token ile giriş izni verme
     if (kullanici && (await kullanici.sifreKarsilastir(sifre))) {
       res.status(200).json({
         basarili: true,
@@ -105,7 +105,7 @@ export const girisYap = async (req, res, sonraki) => {
 
 // @desc    Kullanıcı profilini getir
 // @route   GET /api/kullanici/profil
-// @access  Private (Sadece giriş yapmış olanlar)
+// @access  Private 
 export const profilGetir = async (req, res, sonraki) => {
   try {
     // req.kullanici zaten kimlikDogrula middleware'inden geliyor.

@@ -5,7 +5,7 @@ const hataYakalayici = (hata, req, res, sonraki) => {
   let durumKodu = res.statusCode === 200 ? 500 : res.statusCode;
   let mesaj = hata.message || 'Sunucuda bilinmeyen bir hata oluştu.';
 
-  // MongoDB'de bulunamayan ID hatası (CastError)
+  // MongoDB'de olmayan ID hatası (CastError)
   if (hata.name === 'CastError') {
     durumKodu = 400;
     mesaj = 'Geçersiz veri formatı (Örn: Yanlış ID formatı).';
@@ -14,25 +14,25 @@ const hataYakalayici = (hata, req, res, sonraki) => {
   // MongoDB'de benzersiz olması gereken bir alanın (Örn: eposta) tekrar kaydedilmeye çalışılması hatası (Duplicate Key)
   if (hata.code === 11000) {
     durumKodu = 400;
-    // Hangi alanın çakıştığını bulup dinamik hata veriyoruz
+    // Hangi alanın çakıştığını bulup dinamik hata verme
     const alan = Object.keys(hata.keyValue)[0];
     mesaj = `Bu ${alan === 'eposta' ? 'e-posta adresi' : alan} zaten kullanımda. Lütfen başka bir değer giriniz.`;
   }
 
-  // Mongoose doğrulama (validation) hataları (Örn: Şifrenin 6 karakterden kısa olması veya boş bırakılan alanlar)
+  // Mongoose doğrulama (validation) 
   if (hata.name === 'ValidationError') {
     durumKodu = 400;
-    // Tüm doğrulama hatalarını birleştirip tek bir mesaj haline getiriyoruz
+    // Tüm doğrulama hatalarını birleştirip tek bir mesaj haline getirme
     mesaj = Object.values(hata.errors)
       .map((oge) => oge.message)
       .join(' | ');
   }
 
-  // Yanıtı gönderiyoruz
+  // Yanıtı gönderme
   res.status(durumKodu).json({
     basarili: false,
     mesaj: mesaj,
-    // Geliştirme ortamındaysak hatanın detayını da (stack trace) gönderelim ki hatayı bulmak kolay olsun
+
     hataDetay: process.env.NODE_ENV === 'production' ? null : hata.stack
   });
 };

@@ -1,29 +1,28 @@
 import jwt from 'jsonwebtoken';
 import Kullanici from '../models/Kullanici.js';
 
-// Kullanıcının giriş yapıp yapmadığını kontrol eden güvenlik duvarı (middleware)
+// Kullanıcının girişini kontrol eden güvenlik duvarı (middleware)
 export const kimlikDogrula = async (req, res, sonraki) => {
   let token;
 
-  // Tarayıcıdan veya API istemcisinden gelen istek başlıklarında Authorization kısmını arıyoruz
+  // istek başlıklarında Authorization kısmını ara
   // Token genelde "Bearer xyzabc..." şeklinde gelir
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
-      // "Bearer" kelimesini çıkartıp sadece token kısmını alıyoruz
+      // "Bearer" ı çıkartıp sadece token kısmını al
       token = req.headers.authorization.split(' ')[1];
 
-      // Token'ı gizli anahtarımızla (JWT_SECRET) çözüyoruz. Bu token gerçekten bizim mi kontrol ediyoruz.
+      // Token'ı gizli anahtarla (JWT_SECRET) çöz. Bu token gerçekten bizim mi kontrol egtme
       const acilanToken = jwt.verify(token, process.env.JWT_SECRET);
 
-      // Token içindeki kullanıcı kimliği (id) ile veritabanından kullanıcıyı buluyoruz.
-      // Şifre alanını istemciden gizlemek için select('-sifre') yapıyoruz.
+      // Token içindeki kullanıcı kimliği (id) ile veritabanından kullanıcıyı bul
+      // Şifre alanını istemciden gizlemek için select('-sifre') yaptım
       req.kullanici = await Kullanici.findById(acilanToken.id).select('-sifre');
 
       if (!req.kullanici) {
         return res.status(401).json({ mesaj: 'Yetkisiz erişim. Kullanıcı bulunamadı.' });
       }
 
-      // Her şey yolundaysa sıradaki fonksiyona/kontrolcüye geçiyoruz
       sonraki();
     } catch (hata) {
       console.error('Token Doğrulama Hatası:', hata.message);
@@ -31,7 +30,7 @@ export const kimlikDogrula = async (req, res, sonraki) => {
     }
   }
 
-  // Eğer istekte token gönderilmediyse hata dönüyoruz
+  // Eğer istekte token gönderilmediyse hata dön
   if (!token) {
     return res.status(401).json({ mesaj: 'Yetkisiz erişim. Token bulunamadı.' });
   }
@@ -41,7 +40,7 @@ export const kimlikDogrula = async (req, res, sonraki) => {
 export const adminKontrolu = (req, res, sonraki) => {
   // kimlikDogrula middleware'i req.kullanici nesnesini doldurmuş olmalıdır
   if (req.kullanici && req.kullanici.rol === 'admin') {
-    sonraki(); // Admin ise geçebilir
+    sonraki(); // Admin ise geç
   } else {
     return res.status(403).json({ mesaj: 'Bu işlem için yetkiniz yok. Sadece yöneticiler yapabilir.' });
   }

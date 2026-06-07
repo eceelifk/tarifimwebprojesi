@@ -2,10 +2,10 @@ import mongoose from 'mongoose';
 import Kullanici from '../models/Kullanici.js';
 import Tarif from '../models/Tarif.js';
 
-// Verileri tohumlama (Seed Data) fonksiyonu
+// Seed Data fonksiyonu
 const verileriTohumla = async () => {
   try {
-    // 1. Örnek Sistem Şefi (Admin)
+    // Admin
     let sef = await Kullanici.findOne({ eposta: 'sef@tarifim.com' });
     if (!sef) {
       sef = await Kullanici.create({
@@ -17,7 +17,7 @@ const verileriTohumla = async () => {
       });
     }
 
-    // 2. Örnek Kullanıcı 1 (Elif Yılmaz)
+    // Kullanıcı 1 (Elif Yılmaz)
     let elif = await Kullanici.findOne({ eposta: 'elif@tarifim.com' });
     if (!elif) {
       elif = await Kullanici.create({
@@ -29,7 +29,7 @@ const verileriTohumla = async () => {
       });
     }
 
-    // 3. Örnek Kullanıcı 2 (Ahmet Demir)
+    // Kullanıcı 2 (Ahmet Demir)
     let ahmet = await Kullanici.findOne({ eposta: 'ahmet@tarifim.com' });
     if (!ahmet) {
       ahmet = await Kullanici.create({
@@ -41,7 +41,7 @@ const verileriTohumla = async () => {
       });
     }
 
-    // Hazır tarifleri tanımla (Çalışan, yüksek kaliteli görsel adresleriyle)
+    // Hazır tarifler
     const hazirTarifler = [
       {
         baslik: 'Geleneksel Mercimek Çorbası',
@@ -408,14 +408,14 @@ const verileriTohumla = async () => {
       }
     ];
 
-    // Her tarif için veritabanını kontrol edip eksik olanları ekliyoruz / var olanları güncelliyoruz
+    // Her tarif için veritabanını kontrol edip eksik olanları eklemeyegüncelliyoruz
     for (const tarif of hazirTarifler) {
       const mevcutTarif = await Tarif.findOne({ baslik: tarif.baslik });
       if (!mevcutTarif) {
         await Tarif.create(tarif);
         console.log(`Yeni hazır tarif eklendi: "${tarif.baslik}"`);
       } else {
-        // Var olan tarifin resim ve yazar linklerini güncelliyoruz
+        // Var olan tarifin resim ve yazar linklerini güncelledim
         await Tarif.updateOne(
           { _id: mevcutTarif._id },
           { $set: { resimUrl: tarif.resimUrl, yazar: tarif.yazar } }
@@ -428,7 +428,7 @@ const verileriTohumla = async () => {
   }
 };
 
-// MongoDB veritabanına bağlanmak için bir fonksiyon oluşturuyoruz
+// MongoDB ye bağlanmak için fonk
 const veritabaninaBaglan = async () => {
   try {
     const baglantiAdresi = process.env.MONGODB_URI;
@@ -439,7 +439,6 @@ const veritabaninaBaglan = async () => {
     console.log(`Veritabanı: ${baglanti.connection.name}`);
     console.log(`=========================================\n`);
 
-    // Tohumlama fonksiyonunu çalıştırıyoruz
     await verileriTohumla();
   } catch (hata) {
     console.error(`MongoDB Bağlantı Hatası: ${hata.message}`);

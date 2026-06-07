@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-// Yemek Tarifinin şablonu (Schema)
+// Yemek Tarifinin şablonu 
 const TarifSema = new mongoose.Schema(
   {
     baslik: {
@@ -22,7 +22,7 @@ const TarifSema = new mongoose.Schema(
       default: 'Diğer'
     },
     malzemeler: {
-      type: [String], // Metinlerden oluşan dizi (Örn: ["2 adet yumurta", "1 bardak un"])
+      type: [String], //  ["2 adet yumurta", "1 bardak un"])
       required: [true, 'Lütfen tarif malzemelerini ekleyiniz.'],
       validate: {
         validator: function (deger) {
@@ -32,7 +32,7 @@ const TarifSema = new mongoose.Schema(
       }
     },
     hazirlanis: {
-      type: [String], // Hazırlık adımları dizisi (Örn: ["Malzemeleri karıştırın", "Fırına verin"])
+      type: [String], // ["Malzemeleri karıştırın", "Fırına verin"])
       required: [true, 'Lütfen tarifin hazırlanış adımlarını yazınız.'],
       validate: {
         validator: function (deger) {
@@ -52,7 +52,7 @@ const TarifSema = new mongoose.Schema(
       min: [0, 'Süre 0\'dan küçük olamaz.']
     },
     kisiSayisi: {
-      type: Number, // Kaç kişilik yemek
+      type: Number, 
       required: [true, 'Lütfen yemeğin kaç kişilik olduğunu yazınız.'],
       min: [1, 'En az 1 kişilik olmalıdır.']
     },
@@ -62,7 +62,7 @@ const TarifSema = new mongoose.Schema(
     },
     yazar: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Kullanici', // Tarifi ekleyen kullanıcı (Modeller arası ilişki)
+      ref: 'Kullanici',
       required: true
     },
     puanlar: [
@@ -90,7 +90,7 @@ const TarifSema = new mongoose.Schema(
   }
 );
 
-// Tarifin ortalama puanını puanlar güncellendikçe hesaplayan bir yardımcı fonksiyon
+// Tarifin ortalama puanını puanlar güncellendikçe hesaplayan fonk
 TarifSema.methods.ortalamaPuanHesapla = function () {
   if (this.puanlar.length === 0) {
     this.ortalamaPuan = 0;

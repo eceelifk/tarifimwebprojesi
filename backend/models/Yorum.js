@@ -1,16 +1,16 @@
 import mongoose from 'mongoose';
 
-// Yorum şablonu (Schema)
+
 const YorumSema = new mongoose.Schema(
   {
     tarif: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Tarif', // Yorumun yapıldığı tarif (Modeller arası ilişki)
+      ref: 'Tarif', // Yorumun yapıldığı tarif 
       required: [true, 'Yorumun hangi tarife yapıldığı belirtilmelidir.']
     },
     yazar: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Kullanici', // Yorumu yapan kullanıcı (Modeller arası ilişki)
+      ref: 'Kullanici', // Yorumu yapan kullanıcı 
       required: [true, 'Yorumun yazarı belirtilmelidir.']
     },
     icerik: {
@@ -21,7 +21,7 @@ const YorumSema = new mongoose.Schema(
     }
   },
   {
-    timestamps: true // Oluşturulma tarihi yorumlarda çok önemlidir, o yüzden timestamps kullanıyoruz
+    timestamps: true // Oluşturulma tarihi icin
   }
 );
 
