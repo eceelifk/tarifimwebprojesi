@@ -74,7 +74,7 @@ const GirisKayit = ({ tip = 'giris' }) => {
 
     try {
       setYukleniyor(true);
-      const url = `http://localhost:5000/api/kullanici/${tip === 'kayit' ? 'kayit' : 'giris'}`;
+      const url = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/kullanici/${tip === 'kayit' ? 'kayit' : 'giris'}`;
       
       const istekGovdesi = tip === 'kayit' 
         ? { isim: isim.trim(), eposta: eposta.trim(), sifre, profilResmi }

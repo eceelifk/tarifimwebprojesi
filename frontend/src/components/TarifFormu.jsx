@@ -11,7 +11,7 @@ const TarifFormu = ({ ilkDegerler, onSubmit, yukleniyor, baslikEtiketi }) => {
   const [kisiSayisi, setKisiSayisi] = useState(4);
   const [resimUrl, setResimUrl] = useState('');
 
-  // Dinamik Liste Durumları (Malzemeler ve Hazırlanış)
+  // Dinamik Liste Durumu (Malzemeler ve Hazırlanış)
   const [malzemeler, setMalzemeler] = useState([]);
   const [yeniMalzeme, setYeniMalzeme] = useState('');
   
@@ -35,7 +35,7 @@ const TarifFormu = ({ ilkDegerler, onSubmit, yukleniyor, baslikEtiketi }) => {
     }
   };
 
-  // Eğer güncelleme modundaysak (ilkDegerler doluysa) form alanlarını doldur
+  //  güncelleme modundaysa (ilkDegerler doluysa) form alanlarını doldur
   useEffect(() => {
     if (ilkDegerler) {
       setBaslik(ilkDegerler.baslik || '');
@@ -50,7 +50,7 @@ const TarifFormu = ({ ilkDegerler, onSubmit, yukleniyor, baslikEtiketi }) => {
     }
   }, [ilkDegerler]);
 
-  // Yeni malzeme ekleme
+  // Yeni malzeme ekle
   const malzemeEkleHandler = (e) => {
     e.preventDefault();
     if (yeniMalzeme.trim()) {

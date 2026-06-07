@@ -29,7 +29,7 @@ const TarifDetay = () => {
     const tarifDetayCek = async () => {
       try {
         setYukleniyor(true);
-        const yanit = await fetch(`http://localhost:5000/api/tarifler/${id}`);
+        const yanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler/${id}`);
         const veri = await yanit.json();
 
         if (veri.basarili) {
@@ -69,7 +69,7 @@ const TarifDetay = () => {
 
     try {
       setFavoriYukleniyor(true);
-      const yanit = await fetch(`http://localhost:5000/api/tarifler/${tarif._id}/favori`, {
+      const yanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler/${tarif._id}/favori`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -103,7 +103,7 @@ const TarifDetay = () => {
 
     try {
       setPuanYukleniyor(true);
-      const yanit = await fetch(`http://localhost:5000/api/tarifler/${tarif._id}/puan`, {
+      const yanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler/${tarif._id}/puan`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ const TarifDetay = () => {
   const tarifSilHandler = async () => {
     try {
       setSilmeYukleniyor(true);
-      const yanit = await fetch(`http://localhost:5000/api/tarifler/${tarif._id}`, {
+      const yanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler/${tarif._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

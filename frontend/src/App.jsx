@@ -11,12 +11,12 @@ import TarifEkleDuzenle from './pages/TarifEkleDuzenle';
 import Bildirim from './components/Bildirim';
 import './App.css';
 
-// Rota ve Düzen Yönetimi için Alt Bileşen (useLocation kullanabilmek için BrowserRouter altında olmalıdır)
+// Rota ve Düzen Yönetimi için Alt Bileşen (useLocation kullanabilmek için BrowserRouter altında olmalı)
 function UygulamaIcerigi() {
   const konum = useLocation();
   const [bildirim, setBildirim] = useState({ acik: false, mesaj: '', tip: 'basari' });
 
-  // Sayfalar arası yönlendirmede gönderilen durum mesajlarını (Örn: Tarif silindi, Tarif güncellendi) 
+  // Sayfalar arası yönlendirmede gönderilen durum mesajlarını (Tarif silindi gibi) 
   // yakalayıp ekranın sağ altında Toast bildirim olarak gösteren mekanizma
   useEffect(() => {
     if (konum.state && konum.state.bildirimMesaj) {
@@ -25,7 +25,7 @@ function UygulamaIcerigi() {
         mesaj: konum.state.bildirimMesaj,
         tip: konum.state.bildirimTip || 'basari'
       });
-      // Mesajı okuduktan sonra sayfanın URL'indeki state bilgisini temizliyoruz ki sayfa yenilendiğinde tekrar açılmasın
+      // Mesajı okuduktan sonra sayfanın URL'indeki state bilgisini temizle sayfa yenilendiğinde tekrar açılmasın
       window.history.replaceState({}, document.title);
     }
   }, [konum]);
@@ -37,7 +37,7 @@ function UygulamaIcerigi() {
       {/* Üst Menü Çubuğu */}
       <Navbar />
 
-      {/* Sayfa İçeriklerinin Eklendiği Dinamik Alan */}
+      {/* Sayfa İçeriklerinin Eklendiği Alan */}
       <main className="icerik-alani">
         <Routes>
           <Route path="/" element={<AnaSayfa />} />
@@ -61,7 +61,7 @@ function UygulamaIcerigi() {
   );
 }
 
-// Ana App Bileşeni: Tüm uygulamayı Sağlayıcılarla (Context ve Router) kaplıyoruz
+// Ana App Bileşeni: Tüm uygulamayı Sağlayıcılarla (Context ve Router) kaplama
 function App() {
   return (
     <OturumSaglayici>

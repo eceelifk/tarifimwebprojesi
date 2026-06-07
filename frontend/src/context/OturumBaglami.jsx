@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-// Oturum Baglamı'nı (AuthContext) oluşturuyoruz. Bu sayede tüm sayfa ve bileşenler 
+// Oturum Baglamı (AuthContext) Bu sayede tüm sayfa ve bileşenler 
 // giriş yapmış kullanıcının bilgilerine kolayca erişebilecek.
 export const OturumBaglami = createContext();
 
@@ -12,7 +12,7 @@ export const OturumSaglayici = ({ children }) => {
   const [yukleniyor, setYukleniyor] = useState(true);
 
   useEffect(() => {
-    // Sayfa ilk yüklendiğinde tarayıcı hafızasına bak
+    // Sayfa ilk yüklendiğinde tarayıcı hafızasına bakma
     try {
       const kayıtlıKullanici = localStorage.getItem('tarifim_kullanici');
       const kayıtlıToken = localStorage.getItem('tarifim_token');
@@ -70,7 +70,7 @@ export const OturumSaglayici = ({ children }) => {
   };
 
   return (
-    // Baglamı (Context) dışarıya açıyoruz
+    // Baglamı (Context) dışarıya aç
     <OturumBaglami.Provider value={{ kullanici, token, yukleniyor, giris, cikis, favoriGuncelle }}>
       {children}
     </OturumBaglami.Provider>

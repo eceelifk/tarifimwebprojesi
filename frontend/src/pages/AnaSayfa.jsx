@@ -22,7 +22,7 @@ const AnaSayfa = () => {
         setYukleniyor(true);
         
         // Arama ve Kategori filtrelerini URL'e ekliyoruz
-        let url = 'http://localhost:5000/api/tarifler?';
+        let url = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler?`;
         if (aramaMetni) url += `arama=${encodeURIComponent(aramaMetni)}&`;
         if (seciliKategori) url += `kategori=${encodeURIComponent(seciliKategori)}`;
 

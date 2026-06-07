@@ -31,7 +31,7 @@ const Profil = () => {
         setHata('');
 
         // 1. Kullanıcı profilini ve favorilerini çek
-        const profilYanit = await fetch('http://localhost:5000/api/kullanici/profil', {
+        const profilYanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/kullanici/profil`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -39,7 +39,7 @@ const Profil = () => {
         const profilVeri = await profilYanit.json();
 
         // 2. Tüm tarifleri çekip kullanıcının kendi tariflerini filtrele
-        const tariflerYanit = await fetch('http://localhost:5000/api/tarifler');
+        const tariflerYanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler`);
         const tariflerVeri = await tariflerYanit.json();
 
         if (profilVeri.basarili && tariflerVeri.basarili) {

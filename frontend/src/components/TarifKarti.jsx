@@ -8,7 +8,7 @@ const TarifKarti = ({ tarif, onFavoriDurumuDegisti }) => {
   const navigate = useNavigate();
   const [favoriYukleniyor, setFavoriYukleniyor] = useState(false);
 
-  // Bu tarif giriş yapmış kullanıcının favorilerinde var mı? (Geriye dönük uyumluluk ve güvenli okuma için)
+  // Bu tarif giriş yapmış kullanıcının favorilerinde var mı diye
   const favorideMi = (kullanici && kullanici.favoriler) ? kullanici.favoriler.includes(tarif._id) : false;
 
   const favoriTiklaHandler = async (e) => {
@@ -26,8 +26,8 @@ const TarifKarti = ({ tarif, onFavoriDurumuDegisti }) => {
     try {
       setFavoriYukleniyor(true);
       
-      // Backend'e istek gönderip favorilere ekle/çıkar yapıyoruz
-      const yanit = await fetch(`http://localhost:5000/api/tarifler/${tarif._id}/favori`, {
+      // Backend'e istek gönderip favorilere ekle/çıkar yap
+      const yanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler/${tarif._id}/favori`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

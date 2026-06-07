@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 
-// Kullanıcıya bilgi vermek için ekranın sağ altında açılan bildirim kutusu
+// Kullanıcya bilgi için açılan bildirim kutusu
 const Bildirim = ({ mesaj, tip = 'basari', onClose }) => {
   useEffect(() => {
     if (mesaj) {
-      // 3 saniye sonra bildirimi otomatik kapatıyoruz
+      // 3 sn sonra bildirimi kapat
       const zamanlayici = setTimeout(() => {
         onClose();
       }, 3000);
 
-      // Bileşen ekrandan giderse zamanlayıcıyı temizle
+      // ekrandan giderse zamanlayıcıyı temizle
       return () => clearTimeout(zamanlayici);
     }
   }, [mesaj, onClose]);

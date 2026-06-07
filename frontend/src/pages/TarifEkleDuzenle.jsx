@@ -32,7 +32,7 @@ const TarifEkleDuzenle = () => {
 
       try {
         setSayfaYukleniyor(true);
-        const yanit = await fetch(`http://localhost:5000/api/tarifler/${id}`);
+        const yanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler/${id}`);
         const veri = await yanit.json();
 
         if (veri.basarili) {
@@ -60,8 +60,8 @@ const TarifEkleDuzenle = () => {
     try {
       setFormYukleniyor(true);
       const url = duzenlemeModu 
-        ? `http://localhost:5000/api/tarifler/${id}`
-        : 'http://localhost:5000/api/tarifler';
+        ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler/${id}`
+        : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/tarifler`;
       
       const metod = duzenlemeModu ? 'PUT' : 'POST';
 

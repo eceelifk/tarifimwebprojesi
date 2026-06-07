@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Kullanıcıdan önemli bir eylem için onay almayı sağlayan Modal (diyalog) penceresi
+// Kullanıcıdan önemli bir eylem için onay almayı sağlıom
 const Modal = ({ acikMi, baslik = 'Emin misiniz?', icerik, onOnay, onIptal }) => {
   if (!acikMi) return null;
 

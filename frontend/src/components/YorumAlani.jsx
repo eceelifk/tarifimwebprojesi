@@ -21,7 +21,7 @@ const YorumAlani = ({ tarifId, yorumlar, onYorumEklendi, onYorumSilindi, tarifYa
     try {
       setYukleniyor(true);
       
-      const yanit = await fetch('http://localhost:5000/api/yorumlar', {
+      const yanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/yorumlar`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const YorumAlani = ({ tarifId, yorumlar, onYorumEklendi, onYorumSilindi, tarifYa
 
       if (veri.basarili) {
         setIcerik('');
-        onYorumEklendi(veri.yorum); // Üst bileşene yeni yorumu ekletiyoruz
+        onYorumEklendi(veri.yorum); // Üst bileşene yeni yorumu ekletme
       } else {
         setHata(veri.mesaj);
       }
@@ -54,7 +54,7 @@ const YorumAlani = ({ tarifId, yorumlar, onYorumEklendi, onYorumSilindi, tarifYa
     }
 
     try {
-      const yanit = await fetch(`http://localhost:5000/api/yorumlar/${yorumId}`, {
+      const yanit = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/yorumlar/${yorumId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -64,14 +64,14 @@ const YorumAlani = ({ tarifId, yorumlar, onYorumEklendi, onYorumSilindi, tarifYa
       const veri = await yanit.json();
 
       if (veri.basarili) {
-        onYorumSilindi(yorumId); // Üst bileşenden sildiriyoruz
+        onYorumSilindi(yorumId); // Üst bileşenden silme
       }
     } catch (hata) {
       console.error('Yorum silinirken hata:', hata);
     }
   };
 
-  // Tarih biçimlendirme yardımcı fonksiyonu
+  // Tarih biçimlendirme fonksiyonu
   const tarihBicimlendir = (tarihString) => {
     const tarih = new Date(tarihString);
     return tarih.toLocaleDateString('tr-TR', {
