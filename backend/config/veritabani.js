@@ -182,7 +182,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 15,
         pisirmeSuresi: 15,
         kisiSayisi: 3,
-        resimUrl: 'https://images.unsplash.com/photo-1604908177488-8462b5bf4cb9?w=800',
+        resimUrl: 'https://i.lezzet.com.tr/images-xxlarge/kremali-mantarli-tavuk-tarifi-b2e5c4b3-faba-4a51-bc04-a58be7ecb1e4',
         yazar: ahmet._id, // Ahmet Demir tarafından
         ortalamaPuan: 4.8,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
@@ -268,7 +268,7 @@ const verileriTohumla = async () => {
         hazirlamaSuresi: 15,
         pisirmeSuresi: 0,
         kisiSayisi: 8,
-        resimUrl: 'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=800',
+        resimUrl: 'https://yaylahabercomtr.teimg.com/crop/1280x720/yaylahaber-com-tr/uploads/2023/08/mozaikpasta.jpg',
         yazar: elif._id, // Elif Yılmaz tarafından
         ortalamaPuan: 4.7,
         puanlar: [{ kullanici: sef._id, puan: 5 }]
